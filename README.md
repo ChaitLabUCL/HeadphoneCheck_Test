@@ -5,7 +5,7 @@ This set of codes implements a online headphone check test using special noises.
 
 
 ## Try it first!
-[Start your headphone test here!](headphonesTestHugginsPitch.html)
+[Start your headphone test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestHugginsPitch.html)
 
 This is just a demo. We don't save your data.
 
@@ -19,7 +19,7 @@ Before diving into this javascript code, check out our Gorilla version of this t
 
 ### Alternative test: McDermott headphone test
 In addition to the test based on detecting the huggins pitch, you may also try another headphone screening test developed by McDermott Lab (MIT).
-[Try the McDermott test here!](headphonesTestMcDermott.html)
+[Try the McDermott test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestMcDermott.html)
 
 The detials of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics](http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here](https://github.com/mcdermottLab/HeadphoneCheck).
 
