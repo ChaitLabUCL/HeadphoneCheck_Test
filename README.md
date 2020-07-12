@@ -5,7 +5,7 @@ This set of codes implements a online headphone check test using special noises.
 
 
 ## Try it first!
-[Start your headphone test here!](https://github.com/sijiazhao/headphonecheck/blob/master/headphonesTest.html)
+[Start your headphone test here!](headphonesTest.html)
 
 This is just a demo. We don't save your data.
 
