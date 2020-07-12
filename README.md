@@ -29,6 +29,6 @@ If you want to acknowledge use of this software when you publish your research, 
 *blah blah blah*
 
 ## Contact
-- If you have any questions about this code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
-- If you have any questions about the [Gorilla version of this task](), please contact Alice Milne (a.milne@ucl.ac.uk).
+- If you have any problems with this code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
+- If you have any problems with the [Gorilla version of this task](), please contact Alice Milne (a.milne@ucl.ac.uk).
 - For other issues, please contact Maria Chait (m.chait@ucl.ac.uk).
