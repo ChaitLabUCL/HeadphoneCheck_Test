@@ -36,16 +36,26 @@ if exist(path_out, 'dir') == 7
 end
 mkdir(path_out);
 
-%% Make an example with the tone present in the 2nd noise
+%% Make an example containing HP to calibrate sound level
+fname = 'HugginsPitch_calibration_HP.flac';
 signal = [];
+for i = 1:10
+    signal = [signal; makeHPitch(freq,wd,1,SampFreq)];
+end
+audiowrite([path_out fname], signal, SampFreq);
 
+%% Make an pure noise example to calibrate sound level
+fname = 'HugginsPitch_calibration_noise.flac';
+signal = makeNoise(10,SampFreq);
+audiowrite([path_out fname], signal, SampFreq);
+
+%% Make an example with the tone present in the 2nd noise
+fname = 'HugginsPitch_example_2.flac';
+signal = [];
 NSig1 = makeNoise(burstLength,SampFreq);
 HPSig2 = makeHPitch(freq,wd,burstLength,SampFreq);
 NSig3 = makeNoise(burstLength,SampFreq);
-
 signal= [NSig1; zeros(SampFreq*intervalLength,2); HPSig2; zeros(SampFreq*intervalLength,2); NSig3];
-
-fname = 'HugginsPitch_example_2.flac';
 audiowrite([path_out fname], signal, SampFreq);
 
 %% Make the real stimuli
