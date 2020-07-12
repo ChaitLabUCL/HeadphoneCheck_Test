@@ -13,7 +13,7 @@ This is just a demo. We don't save your data.
 [Explain the task based on the paper methods]
 
 ## How to use this
-Before diving into this javascript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on Gorilla [add the link here](). 
+Before diving into the JavaScript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on Gorilla [add the link here](). 
 
 *Explain the code structure*
 
@@ -29,6 +29,6 @@ If you want to acknowledge use of this software when you publish your research, 
 *blah blah blah*
 
 ## Contact
-- If you have any problem with this code, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
-- If you have any problem with the Gorilla version of this task, please contact Alice Milne (a.milne@ucl.ac.uk).
+- If you have any questions about this code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
+- If you have any questions about the [Gorilla version of this task](), please contact Alice Milne (a.milne@ucl.ac.uk).
 - For other issues, please contact Maria Chait (m.chait@ucl.ac.uk).
