@@ -5,6 +5,10 @@
  * Read LICENSE file before using
  */
 
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
 .helperDialog {
     text-align: justify;
 }
@@ -15,10 +19,6 @@
 
 .helperDialog .center {
     text-align: center;
-}
-
-.helperDialog img.logo {
-    max-width: 500px;
 }
 
 .helperDialog table {
@@ -35,11 +35,6 @@
     padding: 0.5em;
 }
 
-.helperDialog table td:first-child {
-    font-weight: bold;
-    padding-right: 2em;
-}
-
 .helperDialog .notice {
     text-align: center;
     font-weight: bold;
@@ -48,30 +43,6 @@
 
 .helperDialog .left {
     text-align: left !important;
-}
-
-.helperDialog li {
-    margin: 0.5em 0;
-}
-
-.helperDialog li[data-helper|=checkbox] > * {
-    vertical-align: baseline;
-}
-
-.helperDialog label[data-helper|=checkbox] {
-    display: block;
-    border: 1px solid #FFF;
-    padding: 0;
-    margin: 0.5em 0;
-}
-
-.helperDialog input[type=checkbox][data-helper|=checkbox] {
-    margin: auto;
-}
-
-.helperDialog div[data-helper|=cell] {
-    display: table-cell;
-    padding: 0 0.5em;
 }
 
 .helperDialog hr {

@@ -120,7 +120,7 @@ export default class HeadphonesTest {
               }
             },
             () => {
-              this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', false, false, this.checkVolume.bind(this));
+              this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', this.checkVolume.bind(this));
             },
         );
   }
@@ -145,7 +145,7 @@ export default class HeadphonesTest {
           this._instruction();
         },
         () => {
-          this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', false, false, this.checkHeadphones.bind(this));
+          this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', this.checkHeadphones.bind(this));
         },
     );
   }
@@ -191,7 +191,7 @@ export default class HeadphonesTest {
           if (reason === 'back') {
             this.checkHeadphones(undefined, true);
           } else {
-            this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', false, false, this._instruction.bind(this));
+            this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', this._instruction.bind(this));
           }
         },
     );
@@ -208,7 +208,7 @@ export default class HeadphonesTest {
               this._instruction();
             },
             () => {
-              this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', false, false, this._offerReattempt.bind(this));
+              this._quitCallback('You clicked the "Exit" button so the experiment has stopped.', this._offerReattempt.bind(this));
             },
         );
   }
@@ -263,10 +263,10 @@ export default class HeadphonesTest {
           .trigger('click');
       return;
     }
-    $('#headphoneDialog').dialog('option', 'title', 'Headphone check (' + current + ' of ' + this._settings.checkNumber + ')');
+    $('#headphoneDialog').dialog('option', 'title', 'Headphone check (' + (current - 1) + ' of ' + this._settings.checkNumber + ')');
     $('#progress[data-headphones-progress]')
-        .progressbar({max: this._settings.checkNumber, value: current})
-        .children('span').html('Progress: ' + current + '/' + this._settings.checkNumber);
+        .progressbar({max: this._settings.checkNumber, value: (current - 1)})
+        .children('span').html('Progress: ' + (current - 1) + '/' + this._settings.checkNumber);
     if (current > this._soundList.length) {
       this._soundList.shuffle().setIndexToFirst();
     }
@@ -474,28 +474,23 @@ function createDialog(text = '', options = {}) {
   });
 }
 
-export function quitDialog(message = '', forceQuit, callback) {
-  if (forceQuit) {
-    const text = '<p style="font-weight: bold; margin: 2em 0;">The experiment has stopped.</p>\n' +
-        '<p>' + message + '</p>\n';
-    void createDialog(text, {color: '#FF0000'});
-  } else {
-    const text = '<p class="notice left">The experiment is not complete</p>\n' +
-        '<p>Are you sure you want to exit?</p>';
-    createDialog(text, {yes: 'Exit', back: 'Resume experiment', color: '#FFA500'}).then(
-        () => {
-          quitDialog(message, true);
-          return true;
-        },
-        reason => {
-          if (typeof callback === 'function') {
-            callback(reason);
-          } else {
-            return reason;
-          }
-        },
-    );
-  }
+export function quitDialog(message = '', callback) {
+  const text = '<p class="notice left">The experiment is not complete</p>\n' +
+      '<p>Are you sure you want to exit?</p>';
+  createDialog(text, {yes: 'Exit', back: 'Resume experiment', color: '#FFA500'}).then(
+      () => {
+        const text = '<p style="font-weight: bold; margin: 2em 0;">The experiment has stopped.</p>\n' +
+            '<p>' + message + '</p>\n';
+        void createDialog(text, {color: '#FF0000'});
+      },
+      reason => {
+        if (typeof callback === 'function') {
+          callback(reason);
+        } else {
+          return reason;
+        }
+      },
+  );
 }
 
 /**

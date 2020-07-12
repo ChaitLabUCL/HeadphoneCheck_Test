@@ -25,6 +25,7 @@
   import HeadphonesTest, {quitDialog} from './headphonesTest.js';
 
   // Optional: set options (see JSDoc in headphonesTest.js).
+  // If no options are set, a volume calibration page, followed by a Huggins Pitch test with a pass mark of 6/6 is presented.
   // For example, set number of correct trials to pass the check to 6.
   const options = {
     checkPassNumber: 6,
@@ -41,12 +42,14 @@
   // Function to display the result after completing the test.
   function showResult(result) {
     let resultMessage = result ? 'Pass' : 'Fail';
-    $('body')
+    $('body').append('<div id="testResults" style="position: absolute; top: 10%; left: 50%; width: 1000px; margin-left: -500px; text-align: center; font-size: 3em;"></div>');
+    $('#testResults')
         .append('<p>' + resultMessage + '</p>')
-        .append('<p>You got ' + headphonesTest.attemptRecord.get(1).numberCorrect + ' out of 6 correct</p>')
-        .append('<p><a href="">Click here to try again</a></p>');
+        .append('<p>You got ' + headphonesTest.attemptRecord.get(1).numberCorrect + ' out of 6 correct.<br>(The pass mark is 6.)</p>')
+        .append('<p><a href="..">Go back to the Headphone Check homepage</a></p>');
   }
 
 </script>
+
 </body>
 </html>
