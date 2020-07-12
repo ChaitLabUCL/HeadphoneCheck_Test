@@ -37,15 +37,15 @@ end
 mkdir(path_out);
 
 %% Make an example containing HP to calibrate sound level
-fname = 'HugginsPitch_calibration_HP.flac';
-signal = [];
-for i = 1:10
-    signal = [signal; makeHPitch(freq,wd,1,SampFreq)];
-end
-audiowrite([path_out fname], signal, SampFreq);
+% fname = 'HugginsPitch_calibration_HP.flac';
+% signal = [];
+% for i = 1:10
+%     signal = [signal; makeHPitch(freq,wd,1,SampFreq)];
+% end
+% audiowrite([path_out fname], signal, SampFreq);
 
 %% Make an pure noise example to calibrate sound level
-fname = 'HugginsPitch_calibration_noise.flac';
+fname = 'HugginsPitch_calibration.flac';
 signal = makeNoise(10,SampFreq);
 audiowrite([path_out fname], signal, SampFreq);
 
