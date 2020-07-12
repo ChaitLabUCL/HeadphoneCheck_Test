@@ -19,4 +19,4 @@ For other issues, please contact Maria Chait (m.chait@ucl.ac.uk).
 
 
 ## McDermott headphone test
-You can also use the headphone test developed by McDermott Lab using this set of codes! The detials of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics] (http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here] (https://github.com/mcdermottLab/HeadphoneCheck).
+You can also use the headphone test developed by McDermott Lab using this set of codes! The detials of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics](http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here](https://github.com/mcdermottLab/HeadphoneCheck).
