@@ -18,6 +18,7 @@ clear; close all;
 
 rng('shuffle');
 
+%% Stimuli parameters
 SampFreq = 44100;
 freq = 600;  % frequency for HP
 wd = 0.06; %6 percent (width of the phase shifted band)
@@ -26,8 +27,9 @@ intervalLength = 1;  % in [seconds]
 numSet = 6;  %number of stimuli overall
 IFC = 3; %number of intervals
 
-% Remove all existing stimuli
-path_out = 'stimuli/';
+%% Make the folder to store the stimuli (Remove all existing stimuli)
+[parentdir,~,~] = fileparts(pwd);
+path_out = [parentdir '\stimuli_HugginsPitch\'];
 if exist(path_out, 'dir') == 7
     rmdir(path_out,'s');
     disp('... The existing output directory was removed!');
