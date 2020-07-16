@@ -17,11 +17,11 @@ Before diving into the JavaScript code, check out our Gorilla version of this ta
 
 *Explain the code structure*
 
-### Alternative test: McDermott headphone test
-In addition to the test based on detecting the huggins pitch, you may also try another headphone screening test developed by McDermott Lab (MIT).
-[Try the McDermott test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestMcDermott.html)
+### Alternative test: Anti-Phase headphone test
+In addition to the test based on detecting the Huggins pitch, you may also try another headphone screening test developed by McDermott Lab (MIT).
+[Try the Anti-Phase test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestAntiPhase.html)
 
-The detials of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics](http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here](https://github.com/mcdermottLab/HeadphoneCheck).
+The details of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics](http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here](https://github.com/mcdermottLab/HeadphoneCheck).
 
 ## How to cite us
 If you want to acknowledge use of this software when you publish your research, please cite us: 
