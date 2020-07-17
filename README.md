@@ -1,8 +1,6 @@
 # Web-based headphone Check with Huggins Pitch
 
-This set of codes implements a online headphone check test using special noises. You can find more details about this test in our paper [add the link here]().
-
-
+This set of codes implements a online headphone check test using special noises. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv.](insert HTML).
 
 ## Try it first!
 [Start your headphone test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestHugginsPitch.html)
@@ -10,12 +8,10 @@ This set of codes implements a online headphone check test using special noises.
 This is just a demo. We don't save your data.
 
 ## Stimuli and task
-[Explain the task based on the paper methods]
+This task uses a 3AFC paradigm: two intervals of white noise, and a third interval that contains a Huggins' Pitch are played in a random order, and listeners have to detect which of the 3 noises contains the Huggins' Pitch. 6 trials are presented and you will need to manually input the number of correct response required to pass the test using the experiment tree. We recommend a threshold of 6/6 as lower thresholds will result in a similar sensitivity but an increased portion of speaker users.
 
 ## How to use this
-Before diving into the JavaScript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on Gorilla [add the link here](). 
-
-*Explain the code structure*
+Before diving into the JavaScript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on [Gorilla](https://gorilla.sc/admin/experiment/22282/design?). 
 
 ### Alternative test: Anti-Phase headphone test
 In addition to the test based on detecting the Huggins pitch, you may also try another headphone screening test developed by McDermott Lab (MIT).
@@ -25,10 +21,8 @@ The details of that task has been documented in [Woods KJP, Siegel MH, Traer J &
 
 ## How to cite us
 If you want to acknowledge use of this software when you publish your research, please cite us: 
-
-*blah blah blah*
+Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv.
 
 ## Contact
 - If you have any problems with this code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
-- If you have any problems with the [Gorilla version of this task](), please contact Alice Milne (a.milne@ucl.ac.uk).
-- For other issues, please contact Maria Chait (m.chait@ucl.ac.uk).
+- If you have any problems with the Gorilla version of this task, please contact Alice Milne (a.milne@ucl.ac.uk).
