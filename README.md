@@ -1,6 +1,6 @@
 # Web-based headphone Check with Huggins Pitch
 
-This set of codes implements a online headphone check test using special noises. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv.](https://www.biorxiv.org/content/10.1101/2020.07.21.214395v1).
+This set of codes implements a online headphone check test using special noises. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv](https://www.biorxiv.org/content/10.1101/2020.07.21.214395v1).
 
 ## Try it first!
 [Start your headphone test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestHugginsPitch.html)
