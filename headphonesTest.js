@@ -263,10 +263,10 @@ export default class HeadphonesTest {
           .trigger('click');
       return;
     }
-    $('#headphoneDialog').dialog('option', 'title', 'Headphone check (' + (current - 1) + ' of ' + this._settings.checkNumber + ')');
+    $('#headphoneDialog').dialog('option', 'title', 'Headphone check (' + current + ' of ' + this._settings.checkNumber + ')');
     $('#progress[data-headphones-progress]')
-        .progressbar({max: this._settings.checkNumber, value: (current - 1)})
-        .children('span').html('Progress: ' + (current - 1) + '/' + this._settings.checkNumber);
+        .progressbar({max: this._settings.checkNumber, value: current})
+        .children('span').html('Progress: ' + current + '/' + this._settings.checkNumber);
     if (current > this._soundList.length) {
       this._soundList.shuffle().setIndexToFirst();
     }
