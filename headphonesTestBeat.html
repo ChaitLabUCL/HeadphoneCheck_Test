@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Demo: Anti Phase Headphone Test</title>
+    <title>Demo: Binaural Beat Headphone Test</title>
     <meta charset="UTF-8">
     <meta content="user-scalable=no" name="viewport">
     <!-- Required stylesheets: JQuery-UI and headphones test styling -->
@@ -26,21 +26,29 @@
 
   // Optional: set options (see JSDoc in headphonesTest.js).
   // For example:
-  //    - set the check type to 'pitch' for a Anti-Phase pitch test
-  //    - set the pass number to 5
-  //    - set the volume calibration sound to 'stimuli_AntiPhase/Antiphase_calibration.flac'
+  //    - set the check type to 'beat' for a Beat test
+  //    - set the pass number to 6
+  //    - set the volume calibration sound to 'timuli_Beat/Beat_calibration.flac'
+  //    - set the example check sound to 'timuli_Beat/Beat_calibration.flac'
   //    - provide a set of check sounds
   const options = {
-    checkType: 'phase',
-    checkPassNumber: 5,
-    volumeSound: 'stimuli_AntiPhase/Antiphase_calibration.flac',
+    checkType: 'beat',
+    checkPassNumber: 6,
+    volumeSound: 'stimuli_Beat/Beat_calibration.flac',
+    checkExample: 'stimuli_Beat/Beat_demo1_2.flac',
     checkSounds: [
-      {answer: 3, file: 'stimuli_AntiPhase/Antiphase_HC_OIS.flac'},
-      {answer: 2, file: 'stimuli_AntiPhase/Antiphase_HC_OSI.flac'},
-      {answer: 1, file: 'stimuli_AntiPhase/Antiphase_HC_SIO.flac'},
-      {answer: 1, file: 'stimuli_AntiPhase/Antiphase_HC_SOI.flac'},
-      {answer: 3, file: 'stimuli_AntiPhase/Antiphase_HC_IOS.flac'},
-      {answer: 2, file: 'stimuli_AntiPhase/Antiphase_HC_ISO.flac'},
+      {answer: 2, file: 'stimuli_Beat/Beat_1_2.flac'},
+      {answer: 3, file: 'stimuli_Beat/Beat_2_3.flac'},
+      {answer: 1, file: 'stimuli_Beat/Beat_3_1.flac'},
+      {answer: 3, file: 'stimuli_Beat/Beat_4_3.flac'},
+      {answer: 3, file: 'stimuli_Beat/Beat_5_3.flac'},
+      {answer: 2, file: 'stimuli_Beat/Beat_6_2.flac'},
+      {answer: 1, file: 'stimuli_Beat/Beat_7_1.flac'},
+      {answer: 2, file: 'stimuli_Beat/Beat_8_2.flac'},
+      {answer: 3, file: 'stimuli_Beat/Beat_9_3.flac'},
+      {answer: 1, file: 'stimuli_Beat/Beat_10_1.flac'},
+      {answer: 1, file: 'stimuli_Beat/Beat_11_1.flac'},
+      {answer: 2, file: 'stimuli_Beat/Beat_12_2.flac'},
     ],
   };
 
@@ -57,9 +65,9 @@
     let resultMessage = result ? 'Pass' : 'Fail';
     $('body').append('<div id="testResults" style="position: absolute; top: 10%; left: 50%; width: 1000px; margin-left: -500px; text-align: center; font-size: 3em;"></div>');
     $('#testResults')
-        .append('<p>' + resultMessage + '</p>')
-        .append('<p>You got ' + headphonesTest.attemptRecord.get(1).numberCorrect + ' out of 6 correct.<br>(The pass mark is 5.)</p>')
-        .append('<p><a href="https://sijiazhao.github.io/headphonecheck/">Go back to the Headphone Check homepage</a></p>');
+    .append('<p>' + resultMessage + '</p>')
+    .append('<p>You got ' + headphonesTest.attemptRecord.get(1).numberCorrect + ' out of 6 correct.<br>(The pass mark is 6.)</p>')
+    .append('<p><a href="https://sijiazhao.github.io/headphonecheck/">Go back to the Headphone Check homepage</a></p>');
   }
 
 </script>

@@ -11,8 +11,8 @@ export default class HeadphonesTest {
    * @param {object} [settings={}] - settings for the Headphones class instance
    * @param {string} [settings.volumeSound=volume.flac] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
-   * @param {string} [settings.checkType=huggins] - headphone check paradigm,`huggins` or `phase`
-   * @param {string} [settings.checkExample] - example check sound (`huggins` checkType only)
+   * @param {string} [settings.checkType=huggins] - headphone check paradigm,`huggins` or `phase`, or `beat`
+   * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
    * @param {object[]} [settings.checkSounds] - sounds for headphones check. `object` format: `{answer: int, file: string}`
    * @param {int} [settings.checkNumber=6] - number of headphones check trials
    * @param {int} [settings.checkPassNumber=5] - number of correct trials to pass the check
@@ -74,6 +74,21 @@ export default class HeadphonesTest {
         checkPage: '<p class="notice">Remember, you can only play each sound once. Please listen carefully.</p>\n' +
             '<p class="center">Which noise is the quietest or softest? Is it <b>1</b>, <b>2</b>, or <b>3</b>?</p>',
       },
+      beat: {
+        instruction: '<p class="notice">Now we will check your headphones.</p>\n' +
+            '<p>We need to make sure that your headphones are adjusted and are functioning correctly.</p>\n' +
+            '<p>On the next few pages, each page will have a button that plays a sound. You can only play each sound once, so don\'t press the button until you are ready.</p>\n' +
+            '<p>Each sound contains three noises with silent gaps in-between.</p>\n' +
+            '<p>Your task is to decide which of the three noises was smoothest, and click on the correct button: <b>1</b>, <b>2</b>, or <b>3</b>.</p>\n' +
+            '<p>Click the <span style="color:#03a9f4;"><b>blue</b></span> button below to play an example. The smoothest tone is the second noise, so the answer is <b>2</b>.\n' +
+            '    You can play the example as many times as you like.</p>\n' +
+            '<div class="notice">\n' +
+            '    <button type="button" data-helper-button data-headphones-audio-control data-headphones-audio-group="group1" disabled>Loading sounds...</button>\n' +
+            '</div>\n' +
+            '<span data-helper-headphones-check-target></span>',
+        checkPage: '<p class="notice">Remember, you can only play each sound once. Please listen carefully.</p>\n' +
+            '<p class="center">Which noise is the smoothest? Is it <b>1</b>, <b>2</b>, or <b>3</b>?</p>',
+      },
       reattempt: '<p class="notice">Unfortunately, you did not pass the headphone check.</p>\n' +
           '<p>Please make sure that you are in a quiet room, and that you are wearing your headphones correctly.</p>\n' +
           '<p>You may also try using a different pair of headphones. It is possible that the sound quality of the headphones was not good enough.</p>\n' +
@@ -83,12 +98,15 @@ export default class HeadphonesTest {
       this._settings = Object.assign(this._settings, settings);
       if (settings.checkType) {
         switch (settings.checkType.toLowerCase()) {
-          case 'huggins':
-            this._settings.checkType = 'huggins';
-            break;
           case 'phase':
-          default:
             this._settings.checkType = 'phase';
+            break;
+          case 'beat':
+            this._settings.checkType = 'beat';
+            break;
+          case 'huggins':
+          default:
+            this._settings.checkType = 'huggins';
         }
       }
       if (this._settings.checkPassNumber > this._settings.checkNumber) {
@@ -173,7 +191,7 @@ export default class HeadphonesTest {
         '<p class="notice">Remember, from now on, you can only play each sound once.<br>Please listen carefully and choose your answer.</p>\n' +
         '<p class="notice">Are you ready?</p>';
     const promise = createDialog(html, {id: 'headphoneDialog', title: 'Headphone check', yes: 'I am ready to begin', no: 'Exit', back: 'Back'});
-    if (this._settings.checkType === 'huggins') {
+    if (this._settings.checkType === 'huggins' || this._settings.checkType === 'beat') {
       $('span[data-helper-headphones-check-target]').html(
           '<audio data-headphones-audio-group="group1" preload="auto">\n' +
           '    <source src="' + this._settings.checkExample + '">\n' +
