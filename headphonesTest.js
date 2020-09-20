@@ -9,7 +9,7 @@ export default class HeadphonesTest {
    *
    * @constructor
    * @param {object} [settings={}] - settings for the Headphones class instance
-   * @param {string} [settings.volumeSound=volume.flac] - sound for volume adjustment
+   * @param {string} [settings.volumeSound=stimuli_HugginsPitch/HugginsPitch_calibration.flac] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
    * @param {string} [settings.checkType=huggins] - headphone check paradigm,`huggins` or `phase`, or `beat`
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
