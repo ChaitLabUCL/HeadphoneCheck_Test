@@ -12,6 +12,7 @@ export default class HeadphonesTest {
    * @param {string} [settings.volumeSound=stimuli_HugginsPitch/HugginsPitch_calibration.flac] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
    * @param {string} [settings.checkType=huggins] - headphone check paradigm,`huggins` or `phase`, or `beat`
+   * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
    * @param {object[]} [settings.checkSounds] - sounds for headphones check. `object` format: `{answer: int, file: string}`
    * @param {int} [settings.checkNumber=6] - number of headphones check trials
@@ -24,6 +25,7 @@ export default class HeadphonesTest {
       volumeSound: 'stimuli_HugginsPitch/HugginsPitch_calibration.flac',
       volumeText: '',
       checkType: 'huggins',
+      checkVolume: 1,
       checkExample: 'stimuli_HugginsPitch/HugginsPitch_example_2.flac',
       checkSounds: [
         {answer: 1, file: 'stimuli_HugginsPitch/HugginsPitch_set1_1.flac'},
@@ -96,6 +98,13 @@ export default class HeadphonesTest {
     };
     if (settings) {
       this._settings = Object.assign(this._settings, settings);
+      if (this._settings.checkVolume > 1) {
+        this._settings.checkVolume = 1;
+      } else {
+        if (this._settings.checkVolume < 0) {
+          this._settings.checkVolume = 0;
+        }
+      }
       if (settings.checkType) {
         switch (settings.checkType.toLowerCase()) {
           case 'phase':
@@ -174,7 +183,7 @@ export default class HeadphonesTest {
         '<p>Click the <span style="color:#03a9f4;"><b>blue</b></span> button below to play a sound to check your volume. ' + this._settings.volumeText + '</p>\n' +
         '<div class="notice">\n' +
         '    <button type="button" data-helper-button data-headphones-audio-control data-headphones-audio-group="group1" disabled>Loading sounds...</button>\n' +
-        '    <audio data-headphones-audio-group="group1" preload="auto" loop>\n' +
+        '    <audio data-headphones-audio-group="group1" data-headphones-volume="1" preload="auto" loop>\n' +
         '        <source src="' + this._settings.volumeSound + '">\n' +
         '        <p>Your browser cannot play the audio files used in this experiment.<br>This experiment will not work.</p>\n' +
         '        <p>Please try this experiment in a different web browser (Firefox and Chrome are recommended), and update your web browser to its newest version.</p>\n' +
@@ -193,7 +202,7 @@ export default class HeadphonesTest {
     const promise = createDialog(html, {id: 'headphoneDialog', title: 'Headphone check', yes: 'I am ready to begin', no: 'Exit', back: 'Back'});
     if (this._settings.checkType === 'huggins' || this._settings.checkType === 'beat') {
       $('span[data-helper-headphones-check-target]').html(
-          '<audio data-headphones-audio-group="group1" preload="auto">\n' +
+          '<audio data-headphones-audio-group="group1" data-headphones-volume="' + this._settings.checkVolume + '" preload="auto">\n' +
           '    <source src="' + this._settings.checkExample + '">\n' +
           '    <p class="notice">Your browser cannot play the audio files used in this experiment.<br>This experiment will not work.</p>\n' +
           '    <p class="notice">Please try this experiment in a different web browser (Firefox and Chrome are recommended), and update your web browser to its newest version.</p>\n' +
@@ -321,7 +330,7 @@ export default class HeadphonesTest {
         '        <button type="button" data-helper-button data-headphones-check-next disabled>Confirm and continue</button>\n' +
         '    </td>\n' +
         '</tr></table>\n' +
-        '<audio data-headphones-audio-group="group1" preload="auto">\n' +
+        '<audio data-headphones-audio-group="group1" data-headphones-volume="' + this._settings.checkVolume + '" preload="auto">\n' +
         '    <source src="' + soundFile + '">\n' +
         '    <p class="notice">Your browser cannot play the audio files used in this experiment.<br>This experiment will not work.</p>\n' +
         '    <p class="notice">Please try this experiment in a different web browser (Firefox and Chrome are recommended), and update your web browser to its newest version.</p>\n' +
@@ -361,6 +370,7 @@ export default class HeadphonesTest {
                       });
                 });
                 for (const audio of audioElements) {
+                  audio.volume = audio.dataset.headphonesVolume;
                   audio.play();
                 }
               });
@@ -383,6 +393,7 @@ export default class HeadphonesTest {
                 .on('click', function() {
                   const audioElements = $('audio[data-headphones-audio-group=' + this.dataset.headphonesAudioGroup + ']');
                   for (const audio of audioElements) {
+                    audio.volume = audio.dataset.headphonesVolume;
                     if (audio.paused || audio.ended) {
                       audio.play();
                       $(this).css('border-color', '#f0f')
