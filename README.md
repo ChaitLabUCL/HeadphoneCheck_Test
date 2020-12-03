@@ -3,7 +3,7 @@
 This set of codes implements a online headphone check test using special noises. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv](https://www.biorxiv.org/content/10.1101/2020.07.21.214395v1).
 
 ## Try it first!
-[Start your headphone test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestHugginsPitch.html)
+[Start your headphone test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestHugginsPitch.html)
 
 This is just a demo. We don't save your data.
 
@@ -19,13 +19,15 @@ If you would like to use the stimuli in your own experimental engine, then downl
 For example: HugginsPitch_set3_1.flac means that the first interval contains the target.
 
 ## How to use this
-Before diving into the JavaScript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on [Gorilla](https://gorilla.sc/admin/experiment/22282/design?). 
+You need some basic knowledge of JavaScript to understand and use these codes. If you are not planning to be a Pro in JavaScript, I highly recommend you to use Gorilla instead. Before diving into the JavaScript code, check out our Gorilla version of this task, which you can use directly if you are planning to host your experiment on [Gorilla](https://gorilla.sc/admin/experiment/22282/design?). 
+
+To use this JavaScript code, you should start with the main script "headphonetest.js". Then look at the demo html files such as “headphoneTestHugginsPitch.html” and modify the demo files to suit your need.
 
 ## Alternative tests
 In addition to the test based on detecting the Huggins pitch, you may also try other two headphone tests.
 
 ### Headphone Screen using Antiphase tone (AT)
-[Try the Anti-Phase test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestAntiPhase.html)
+[Try the Anti-Phase test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestAntiPhase.html)
 
 This was developed by McDermott Lab (MIT). The details of that task has been documented in [Woods KJP, Siegel MH, Traer J & McDermott JH (2017) Headphone screening to facilitate web-based auditory experiments. Attention, Perception & Psychophysics](http://mcdermottlab.mit.edu/papers/Woods_etal_2017_headphone_screening.pdf). And you can also find their version of implementation on [here](https://github.com/mcdermottLab/HeadphoneCheck).
 
@@ -36,7 +38,7 @@ Download the stimuli from the 'stimuli_AntiPhase' folder. Each sound file contai
 For example: Antiphase_HC_IOS.flac would mean that the first interval is in-phase, the second interval is out of phase and the last interval would be quieter and therefore the target.
 
 ### Headphone Screen using Binaural Beat (BT)
-[Try the Binaural Beat test here!](https://sijiazhao.github.io/headphonecheck/headphonesTestBeat.html)
+[Try the Binaural Beat test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestBeat.html)
 
 We also designed another test using binaural beat which can potentially be combined with the HP test to result in better selectivity for headphone use. 
 
