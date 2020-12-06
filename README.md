@@ -38,7 +38,7 @@ Download the stimuli from the 'stimuli_AntiPhase' folder. Each sound file contai
 For example: Antiphase_HC_IOS.flac would mean that the first interval is in-phase, the second interval is out of phase and the last interval would be quieter and therefore the target.
 
 ### Headphone Screen using Binaural Beat (BT)
-[Try the Binaural Beat test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestBeat.html)
+[Try the Beat test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestBeat.html)
 
 We also designed another test using binaural beat which can potentially be combined with the HP test to result in better selectivity for headphone use. 
 
@@ -55,6 +55,6 @@ If you want to acknowledge use of this software when you publish your research, 
 Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv.
 
 ## Contact
-- If you have any problems with this code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
-- If you have any problems with the Gorilla version of this task, please contact Alice Milne (a.milne@ucl.ac.uk).
+- If you have any problems with the stimuli or the Gorilla version of this task, please contact Alice Milne (a.milne@ucl.ac.uk).
+- If you have any problems with the JS code or usage on Pavlovia, please contact Sijia Zhao (sijia.zhao@psy.ox.ac.uk).
 
