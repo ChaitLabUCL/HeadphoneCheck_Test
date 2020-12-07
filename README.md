@@ -24,7 +24,7 @@ You need some basic knowledge of JavaScript to understand and use these codes. A
 To use this JavaScript code, you should start with the main script "headphonetest.js". Then look at the demo html files such as “headphoneTestHugginsPitch.html” and modify the demo files to suit your need.
 
 ## Alternative tests
-In our paper we also refer to two additional headphone screening test, which you can try below:
+In our paper we also refer to two additional headphone screening tests, which you can try below:
 
 ### Headphone Screen using Antiphase tone (AT)
 [Try the Anti-Phase test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestAntiPhase.html)
