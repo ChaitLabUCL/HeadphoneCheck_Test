@@ -1,6 +1,6 @@
 # Headphone screen using Huggins Pitch
 
-This set of codes implements a online headphone check test using dischotic pitch stimuli. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. BioRxiv](https://www.biorxiv.org/content/10.1101/2020.07.21.214395v1).
+This set of codes implements a online headphone check test using dischotic pitch stimuli. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. (2020) An online headphone screening test based on dichotic pitch. Behavior Research Methods.](https://rdcu.be/cbWrX).
 
 ## Try it first!
 [Start your headphone test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesTestHugginsPitch.html)
