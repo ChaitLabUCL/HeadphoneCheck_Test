@@ -46,7 +46,11 @@ mkdir(path_out);
 
 %% Make an pure noise example to calibrate sound level
 fname = 'HugginsPitch_calibration.flac';
-signal = makeNoise(10,SampFreq);
+signal = [];
+for i = 1:5 %5 intervals of sound
+    sig = makeNoise(burstLength,SampFreq);%Make noise burst
+    signal = [signal;sig;zeros(SampFreq*intervalLength,2)];
+end
 audiowrite([path_out fname], signal, SampFreq);
 
 %% Make an example with the tone present in the 2nd noise
