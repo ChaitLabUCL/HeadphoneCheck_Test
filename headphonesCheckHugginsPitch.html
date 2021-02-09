@@ -1,0 +1,47 @@
+<!--
+    Sijia Zhao (2020-2021) sijia.zhao@psy.ox.ac.uk
+    Read LICENSE file before using
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo: Huggins Pitch Headphone Test</title>
+    <meta charset="UTF-8">
+    <meta content="user-scalable=no" name="viewport">
+    <!-- Required stylesheets: JQuery-UI -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Required libraries: JQuery and JQuery-UI -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- Add the headphonesCheck.js JavaScript file -->
+<script src="headphonesCheck.js"></script>
+
+<!-- Example usage -->
+<script>
+
+  // Create a new HeadphonesCheck using the default options (Huggins Pitch test with a pass mark of 6/6)
+  // (see JSDoc in headphonesCheck.js for a full list of options).
+  const headphonesCheck = new HeadphonesCheck();
+
+  // Perform the check (optional: call the showResult function when finished).
+  headphonesCheck.checkHeadphones(showResult);
+
+  // Optional: function to display the result after completing the test.
+  function showResult(result) {
+    let resultMessage = result ? 'Pass' : 'Fail';
+    $('body').append('<div id="testResults" style="width: 100%; text-align: center; font-size: 3em;"></div>');
+    $('#testResults')
+        .append('<p style="margin-top: 1em;">' + resultMessage + '</p>')
+        .append('<p>' + headphonesCheck.attemptRecord[headphonesCheck.attemptCount].numberCorrect + ' out of 6 correct<br>after ' + headphonesCheck.attemptCount + ' attempt(s).<br>(The pass mark is 6.)</p>')
+        .append('<p><a href="https://sijiazhao.github.io/headphonecheck/">Go back to the Headphone Check homepage</a></p>');
+  }
+
+</script>
+<div style="text-align: center; margin: 1em;">Implemented by Sijia Zhao (2020-2021)</div>
+</body>
+</html>
