@@ -1,6 +1,6 @@
 # Headphone screen using Huggins Pitch
 
-This set of codes implements an online headphone check test using dichotic pitch stimuli. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. (2020) An online headphone screening test based on dichotic pitch. Behavior Research Methods](https://rdcu.be/cbWrX).
+This set of code implements an online headphone check test using dichotic pitch stimuli. You can find more details about this test in our paper [Milne A, Bianco R, Poole K, Zhao S, Oxenham A, Billig A & Chait M. (2020) An online headphone screening test based on dichotic pitch. Behavior Research Methods](https://rdcu.be/cbWrX).
 
 ## Try it first!
 [Start your headphone test here!](https://chaitlabucl.github.io/HeadphoneCheck_Test/headphonesCheckHugginsPitch.html)
@@ -54,7 +54,7 @@ For example: Beat_8_2.flac would mean that the second interval is the target
 
 ## How to cite us
 If you want to acknowledge use of this software when you publish your research, please cite us:
-Milne A, Bianco R, Poole K, Zhao S, Billig A & Chait M. An online headphone screening test based on dichotic pitch. Behavior Research Methods.
+Milne A, Bianco R, Poole K, Zhao S, Oxenham A, Billig A & Chait M. An online headphone screening test based on dichotic pitch. Behavior Research Methods.
 
 ## Contact
 - If you have any problems with the stimuli or the Gorilla version of this task, please contact Alice Milne (a.milne@ucl.ac.uk).
