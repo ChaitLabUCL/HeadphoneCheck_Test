@@ -12,32 +12,32 @@ class HeadphonesCheck {
       '.no-close .ui-dialog-titlebar-close {' +
       '    display: none;' +
       '}' +
-      '#headphonesDialog {' +
+      '#headphones-dialog {' +
       '    text-align: justify;' +
       '}' +
-      '#headphonesDialog .center {' +
+      '#headphones-dialog .center {' +
       '    text-align: center;' +
       '}' +
-      '#headphonesDialog table {' +
+      '#headphones-dialog table {' +
       '    margin: 2em auto;' +
       '}' +
-      '#headphonesDialog table,' +
-      '#headphonesDialog table td {' +
+      '#headphones-dialog table,' +
+      '#headphones-dialog table td {' +
       '    border: none;' +
       '    vertical-align: text-top;' +
       '}' +
-      '#headphonesDialog td {' +
+      '#headphones-dialog td {' +
       '    padding: 0.5em;' +
       '}' +
-      '#headphonesDialog .notice {' +
+      '#headphones-dialog .notice {' +
       '    text-align: center;' +
       '    font-weight: bold;' +
       '    margin: 2em 0;' +
       '}' +
-      '#headphonesDialog .left {' +
+      '#headphones-dialog .left {' +
       '    text-align: left !important;' +
       '}' +
-      '#headphonesDialog hr {' +
+      '#headphones-dialog hr {' +
       '    border: none;' +
       '    border-top: 1px solid #ddd;' +
       '    margin: 1em auto;' +
@@ -61,27 +61,27 @@ class HeadphonesCheck {
       '    width: auto;' +
       '    padding: 1em;' +
       '}' +
-      '#headphonesDialog #target {' +
+      '#headphones-dialog [data-headphones-check-target] {' +
       '    height: 10em;' +
       '}' +
-      '#headphonesDialog table {' +
+      '#headphones-dialog table {' +
       '    margin-bottom: 3em;' +
       '}' +
-      '#headphonesDialog td {' +
+      '#headphones-dialog td {' +
       '    width: 16em;' +
       '}' +
-      '#headphonesDialog td span {' +
+      '#headphones-dialog td span {' +
       '    font-weight: normal;' +
       '    display: block;' +
       '    margin-bottom: 1em;' +
       '}' +
-      '#headphonesDialog td span.disabled {' +
+      '#headphones-dialog td span.disabled {' +
       '    color: #c5c5c5;' +
       '}' +
-      '#headphonesDialog #progress {' +
+      '#headphones-dialog [data-headphones-progress] {' +
       '    position: relative;' +
       '}' +
-      '#headphonesDialog #progress span {' +
+      '#headphones-dialog [data-headphones-progress] span {' +
       '    display: block;' +
       '    width: 100%;' +
       '    padding: 0.5em;' +
@@ -137,7 +137,7 @@ class HeadphonesCheck {
    * @param {Function} [settings.callback] - optional callback function on completion
    * @param {string} [settings.volumeSound=stimuli_HugginsPitch/HugginsPitch_calibration.flac] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
-   * @param {string} [settings.checkType=huggins] - headphone check paradigm,`huggins` or `phase`, or `beat`
+   * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `phase`, or `beat`
    * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
    * @param {object[]} [settings.checkSounds] - sounds for headphones check. `object` format: `{answer: int, file: string}`
@@ -213,10 +213,10 @@ class HeadphonesCheck {
         checkPage: '<p class="notice">Remember, you can only play each sound once. Please listen carefully.</p>' +
             '<p class="center">Which noise is the quietest or softest? Is it <b>1</b>, <b>2</b>, or <b>3</b>?</p>',
       },
-      reattempt: '<p class="notice">Unfortunately, you did not pass the headphone check.</p>' +
+      reattempt: '<p class="notice">Unfortunately, you did not pass the headphones check.</p>' +
           '<p>Please make sure that you are in a quiet room, and that you are wearing your headphones correctly.</p>' +
           '<p>You may also try using a different pair of headphones. It is possible that the sound quality of the headphones was not good enough.</p>' +
-          '<p class="notice">If you are sure that your headphones are working properly, you can try the headphone check again.</p>',
+          '<p class="notice">If you are sure that your headphones are working properly, you can try the headphones check again.</p>',
       audioProblem: '<p>Your browser cannot play the audio files used in this study.<br>This study will not work.</p>' +
           '<p>Please try again using a different web browser (Firefox and Chrome are recommended), and update your web browser to its newest version.</p>',
     };
@@ -260,21 +260,29 @@ class HeadphonesCheck {
    *
    * @member HeadphonesCheck.checkVolume
    * @param {Function} [callback] - (if set) callback on completion
+   * @returns {Promise} resolved on completion
    */
   checkVolume(callback) {
     if (typeof callback === 'function') {
       this.callback = callback;
     }
-    this._adjustVolume().then(this.callback);
+    let resolveCall;
+    this._promise = new Promise(resolve => resolveCall = resolve);
+    this._promise.resolve = resolveCall;
+    this._adjustVolume().then(() => {
+      this._promise.resolve();
+      this.callback();
+    });
+    return this._promise;
   }
 
   /**
-   * Perform a headphone check (including a volume check)
+   * Perform a headphones check (including a volume check)
    *
    * @member HeadphonesCheck.checkHeadphones
    * @param {Function} [callback] - (if set) callback on completion, with the result as argument: `true` or `false`
    * @param {boolean} [repeat] - (if `true`) indicates user has returned to the checkVolume page, so enable the "I have finished..." button
-   * @returns {boolean} (only if `callback` not set) result of the headphone check: `true` or `false`
+   * @returns {Promise} fulfilled with the result of the headphones check (pass: resolve, fail: reject)
    */
   checkHeadphones(callback, repeat) {
     if (typeof callback === 'function') {
@@ -284,11 +292,19 @@ class HeadphonesCheck {
     if (repeat) {
       $('button:contains("finished")').button('option', 'disabled', false);
     }
-    promise.then(
-        () => {
-          this._instruction();
-        },
-    );
+    promise.then(() => {
+      this._instruction();
+    });
+    if (!this._promise || this._promise.fulfilled === true) {
+      let resolveCall, rejectCall;
+      this._promise = new Promise((resolve, reject) => {
+        resolveCall = resolve;
+        rejectCall = reject;
+      });
+      this._promise.resolve = resolveCall;
+      this._promise.reject = rejectCall;
+    }
+    return this._promise;
   }
 
   /**
@@ -332,7 +348,7 @@ class HeadphonesCheck {
           this._performCheck();
         },
         () => {
-          this.checkHeadphones(undefined, true);
+          void this.checkHeadphones(undefined, true);
         },
     );
   }
@@ -347,12 +363,10 @@ class HeadphonesCheck {
     if (+this.attemptCount === this._settings.maxAttempts - 1) {
       html += '<p class="notice">If you do not pass on your next attempt, the study cannot continue.</p>';
     }
-    this._createDialog({content: html, title: 'Headphone check failed', yes: 'Try again', color: '#FFA500'})
-        .then(
-            () => {
-              this._instruction();
-            },
-        );
+    this._createDialog({content: html, title: 'Headphones check failed', yes: 'Try again', color: '#FFA500'})
+        .then(() => {
+          this._instruction();
+        });
   }
 
   /**
@@ -362,23 +376,25 @@ class HeadphonesCheck {
    */
   _performCheck() {
     let html = this.htmlElements[this._settings.checkType].checkPage +
-        '<div id="target" class="center" data-headphones-check-target></div>' +
-        '<hr><div id="progress" data-headphones-progress><span></span></div>';
-    const promise = this._createDialog({content: html, title: 'Headphone check', yes: 'Continue'});
+        '<div class="center" data-headphones-check-target></div>' +
+        '<hr><div data-headphones-progress><span></span></div>';
+    const promise = this._createDialog({content: html, title: 'Headphones check', yes: 'Continue'});
     $('button:contains("Continue")')
         .button('option', 'disabled', true)
         .css('visibility', 'hidden');
     this._trialHandler(this._settings.trialCount);
     promise.then(() => {
       if (this.isHeadphones) {
+        this._promise.resolve();
+        this._promise.fulfilled = true;
         this.callback(true);
-        return true;
       } else {
         if (this.attemptCount < this._settings.maxAttempts) {
           this._offerReattempt();
         } else {
+          this._promise.reject();
+          this._promise.fulfilled = true;
           this.callback(false);
-          return false;
         }
       }
     });
@@ -392,7 +408,7 @@ class HeadphonesCheck {
    * @param {int} current
    */
   _trialHandler(remaining, current = 0) {
-    $('#target[data-headphones-check-target]').empty();
+    $('[data-headphones-check-target]').empty();
     if (!current) {
       current = 1;
       this.attemptCount++;
@@ -412,8 +428,8 @@ class HeadphonesCheck {
           .trigger('click');
       return;
     }
-    $('#headphonesDialog').dialog('option', 'title', 'Headphone check (' + current + ' of ' + this._settings.trialCount + ')');
-    $('#progress[data-headphones-progress]')
+    $('#headphones-dialog').dialog('option', 'title', 'Headphones check (' + current + ' of ' + this._settings.trialCount + ')');
+    $('[data-headphones-progress]')
         .progressbar({max: this._settings.trialCount, value: current})
         .children('span').html('Progress: ' + current + '/' + this._settings.trialCount);
     if (current > this._stimuli.length) {
@@ -461,7 +477,7 @@ class HeadphonesCheck {
         '</td>' +
         '</tr></table>' +
         '<audio data-headphones-audio-group="group1" data-headphones-volume="' + this._settings.checkVolume + '" preload="auto"><source src="' + soundFile + '">' + this.htmlElements.audioProblem + '</audio>';
-    $('#target[data-headphones-check-target]').html(html);
+    $('[data-headphones-check-target]').html(html);
     const audioSelector = $('audio[data-headphones-audio-group]');
     let audioCount = audioSelector.length;
     return new Promise((resolve) => {
@@ -469,8 +485,7 @@ class HeadphonesCheck {
         if (--audioCount <= 0) {
           $('button[data-headphones-audio-control]')
               .html('<img alt="Play" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 31.7 31.9\'%3E%3Cpath d=\'M8.6,0.5C6.8-0.6,5.2,0.2,5.2,2.4v27c0,2.2,1.5,3.1,3.4,1.9L30.3,18c1.9-1.2,1.9-3,0-4.2L8.6,0.5z\' fill=\'%2303A9F4\'/%3E%3C/svg%3E">')
-              .
-          prop('disabled', false)
+              .prop('disabled', false)
               .on('click', function() {
                 $(this)
                     .prop('disabled', true)
@@ -587,8 +602,8 @@ class HeadphonesCheck {
     };
     options = Object.assign(defaults, options);
     return new Promise((resolve, reject) => {
-      $('body').append('<div id="headphonesDialog" title="' + options.title + '">' + options.content + '</div>');
-      const images = $('#headphonesDialog img:not([data-helper-image-doNotWait])');
+      $('body').append('<div id="headphones-dialog" title="' + options.title + '">' + options.content + '</div>');
+      const images = $('#headphones-dialog img:not([data-helper-image-doNotWait])');
       let imageCount = images.length;
       let imageTotalHeight = 0;
       const dialogOptions = {
@@ -629,7 +644,7 @@ class HeadphonesCheck {
         });
       }
       const showDialog = function() {
-        $('#headphonesDialog').dialog(dialogOptions).prev('.ui-dialog-titlebar').css('background', options.color);
+        $('#headphones-dialog').dialog(dialogOptions).prev('.ui-dialog-titlebar').css('background', options.color);
       };
       if (imageCount) {
         const imageHandler = function() {
