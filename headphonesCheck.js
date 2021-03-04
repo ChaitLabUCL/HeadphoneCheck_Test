@@ -10,134 +10,134 @@ class HeadphonesCheck {
    */
   _stylesheet = '@charset "utf-8";' +
       '.no-close .ui-dialog-titlebar-close {' +
-      '    display: none;' +
+      '  display: none;' +
       '}' +
       '#headphones-dialog {' +
-      '    text-align: justify;' +
+      '  text-align: justify;' +
       '}' +
       '#headphones-dialog .center {' +
-      '    text-align: center;' +
+      '  text-align: center;' +
       '}' +
       '#headphones-dialog table {' +
-      '    margin: 2em auto;' +
+      '  margin: 2em auto;' +
       '}' +
       '#headphones-dialog table,' +
       '#headphones-dialog table td {' +
-      '    border: none;' +
-      '    vertical-align: text-top;' +
+      '  border: none;' +
+      '  vertical-align: text-top;' +
       '}' +
       '#headphones-dialog td {' +
-      '    padding: 0.5em;' +
+      '  padding: 0.5em;' +
       '}' +
       '#headphones-dialog .notice {' +
-      '    text-align: center;' +
-      '    font-weight: bold;' +
-      '    margin: 2em 0;' +
+      '  text-align: center;' +
+      '  font-weight: bold;' +
+      '  margin: 2em 0;' +
       '}' +
       '#headphones-dialog .left {' +
-      '    text-align: left !important;' +
+      '  text-align: left !important;' +
       '}' +
       '#headphones-dialog hr {' +
-      '    border: none;' +
-      '    border-top: 1px solid #ddd;' +
-      '    margin: 1em auto;' +
+      '  border: none;' +
+      '  border-top: 1px solid #ddd;' +
+      '  margin: 1em auto;' +
       '}' +
       'button[data-helper-button] {' +
-      '    width: 60px;' +
-      '    height: 60px;' +
-      '    border: 1px solid #c5c5c5;' +
-      '    border-radius: 10px;' +
-      '    background-color: #f6f6f6;' +
-      '    margin: 0.5em;' +
-      '    padding: 15px 0;' +
-      '    text-align: center;' +
-      '    cursor: pointer;' +
-      '    color: #000;' +
+      '  width: 60px;' +
+      '  height: 60px;' +
+      '  border: 1px solid #c5c5c5;' +
+      '  border-radius: 10px;' +
+      '  background-color: #f6f6f6;' +
+      '  margin: 0.5em;' +
+      '  padding: 15px 0;' +
+      '  text-align: center;' +
+      '  cursor: pointer;' +
+      '  color: #000;' +
       '}' +
       'button[data-headphones-audio-control] {' +
-      '    border: 1px solid #03a9f4;' +
+      '  border: 1px solid #03a9f4;' +
       '}' +
       'button[data-headphones-check-next] {' +
-      '    width: auto;' +
-      '    padding: 1em;' +
+      '  width: auto;' +
+      '  padding: 1em;' +
       '}' +
       '#headphones-dialog [data-headphones-check-target] {' +
-      '    height: 10em;' +
+      '  height: 10em;' +
       '}' +
       '#headphones-dialog table {' +
-      '    margin-bottom: 3em;' +
+      '  margin-bottom: 3em;' +
       '}' +
       '#headphones-dialog td {' +
-      '    width: 16em;' +
+      '  width: 16em;' +
       '}' +
       '#headphones-dialog td span {' +
-      '    font-weight: normal;' +
-      '    display: block;' +
-      '    margin-bottom: 1em;' +
+      '  font-weight: normal;' +
+      '  display: block;' +
+      '  margin-bottom: 1em;' +
       '}' +
       '#headphones-dialog td span.disabled {' +
-      '    color: #c5c5c5;' +
+      '  color: #c5c5c5;' +
       '}' +
       '#headphones-dialog [data-headphones-progress] {' +
-      '    position: relative;' +
+      '  position: relative;' +
       '}' +
       '#headphones-dialog [data-headphones-progress] span {' +
-      '    display: block;' +
-      '    width: 100%;' +
-      '    padding: 0.5em;' +
-      '    position: absolute;' +
-      '    text-align: center;' +
+      '  display: block;' +
+      '  width: 100%;' +
+      '  padding: 0.5em;' +
+      '  position: absolute;' +
+      '  text-align: center;' +
       '}' +
       'button[data-helper-button]:hover {' +
-      '    background-color: #f0f0f0;' +
+      '  background-color: #f0f0f0;' +
       '}' +
       'button[data-helper-button]:active {' +
-      '    background-color: #eaeaea;' +
-      '    border-width: 2px;' +
+      '  background-color: #eaeaea;' +
+      '  border-width: 2px;' +
       '}' +
       'button[data-helper-button][disabled],' +
       'button[data-helper-button][disabled]:hover,' +
       'button[data-helper-button][disabled]:active {' +
-      '    background-color: #f6f6f6;' +
-      '    border: 1px solid #c5c5c5;' +
-      '    width: auto;' +
-      '    padding: 1em;' +
-      '    cursor: initial;' +
-      '    color: #c5c5c5;' +
+      '  background-color: #f6f6f6;' +
+      '  border: 1px solid #c5c5c5;' +
+      '  width: auto;' +
+      '  padding: 1em;' +
+      '  cursor: initial;' +
+      '  color: #c5c5c5;' +
       '}' +
       'button[data-headphones-check-response][disabled],' +
       'button[data-headphones-check-response][disabled]:hover,' +
       'button[data-headphones-check-response][disabled]:active {' +
-      '    width: 60px;' +
+      '  width: 60px;' +
       '}' +
       'button[data-helper-button=\'selected\'] {' +
-      '    border-color: #32CD32;' +
-      '    background-color: #bbf8bb;' +
-      '    font-weight: bold;' +
+      '  border-color: #32CD32;' +
+      '  background-color: #bbf8bb;' +
+      '  font-weight: bold;' +
       '}' +
       'button[data-helper-button=\'selected\']:hover {' +
-      '    background-color: #b5f2b5;' +
+      '  background-color: #b5f2b5;' +
       '}' +
       'button[data-helper-button=\'selected\']:active {' +
-      '    background-color: #afecaf;' +
-      '    border-width: 2px;' +
+      '  background-color: #afecaf;' +
+      '  border-width: 2px;' +
       '}' +
       'button[data-helper-button][disabled] img {' +
-      '    display: none;' +
+      '  display: none;' +
       '}' +
       'button[data-helper-button] img {' +
-      '    height: 30px;' +
+      '  height: 30px;' +
       '}';
 
   /**
    * Constructor
    *
    * @constructor
-   * @param {object} [settings={}] - settings for the Headphones class instance
+   * @param {object} [settings={}] - settings for the Headphones Check
    * @param {Function} [settings.callback] - optional callback function on completion
    * @param {string} [settings.volumeSound=stimuli_HugginsPitch/HugginsPitch_calibration.flac] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
-   * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `phase`, or `beat`
+   * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `antiphase`, or `beat`
    * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
    * @param {object[]} [settings.checkSounds] - sounds for headphones check. `object` format: `{answer: int, file: string}`
@@ -204,7 +204,7 @@ class HeadphonesCheck {
         checkPage: '<p class="notice">Remember, you can only play each sound once. Please listen carefully.</p>' +
             '<p class="center">Which noise is the smoothest? Is it <b>1</b>, <b>2</b>, or <b>3</b>?</p>',
       },
-      phase: {
+      antiphase: {
         instruction: '<p class="notice">Now we will check your headphones.</p>' +
             '<p>We need to make sure that your headphones are adjusted and are functioning correctly.</p>' +
             '<p>On the next few pages, each page will have a button that plays a sound. You can only play each sound once, so don\'t press the button until you are ready.</p>' +
@@ -222,7 +222,7 @@ class HeadphonesCheck {
     };
     if (settings) {
       this._settings = Object.assign(this._settings, settings);
-      this.callback = (typeof this._settings.callback === 'function') ? this._settings.callback : () => {};
+      this.callback = (typeof this._settings.callback === 'function') ? this._settings.callback : function() {};
       if (this._settings.checkVolume > 1) {
         this._settings.checkVolume = 1;
       } else {
@@ -232,8 +232,8 @@ class HeadphonesCheck {
       }
       if (settings.checkType) {
         switch (settings.checkType.toLowerCase()) {
-          case 'phase':
-            this._settings.checkType = 'phase';
+          case 'antiphase':
+            this._settings.checkType = 'antiphase';
             break;
           case 'beat':
             this._settings.checkType = 'beat';
@@ -538,7 +538,7 @@ class HeadphonesCheck {
           $(this).off('canplaythrough');
           if (--audioCount <= 0) {
             $('button[data-headphones-audio-control]')
-                .html('<img alt="Play" data-helper-image-doNotWait src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 31.7 31.9\'%3E%3Cpath d=\'M8.6,0.5C6.8-0.6,5.2,0.2,5.2,2.4v27c0,2.2,1.5,3.1,3.4,1.9L30.3,18c1.9-1.2,1.9-3,0-4.2L8.6,0.5z\' fill=\'%2303A9F4\'/%3E%3C/svg%3E">')
+                .html('<img alt="Play" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 31.7 31.9\'%3E%3Cpath d=\'M8.6,0.5C6.8-0.6,5.2,0.2,5.2,2.4v27c0,2.2,1.5,3.1,3.4,1.9L30.3,18c1.9-1.2,1.9-3,0-4.2L8.6,0.5z\' fill=\'%2303A9F4\'/%3E%3C/svg%3E">')
                 .prop('disabled', false)
                 .on('click', function() {
                   const audioElements = $('audio[data-headphones-audio-group=' + this.dataset.headphonesAudioGroup + ']');
@@ -602,10 +602,18 @@ class HeadphonesCheck {
     };
     options = Object.assign(defaults, options);
     return new Promise((resolve, reject) => {
+      function resizeToFit() {
+        dialog
+            .dialog('option', 'height', 'auto')
+            .dialog('option', 'position', {my: 'center', at: 'center', of: window});
+        const maxHeight = document.documentElement.clientHeight - 40;
+        if (dialog.outerHeight(true) > maxHeight) {
+          dialog.dialog('option', 'height', maxHeight);
+        }
+      }
+
       $('body').append('<div id="headphones-dialog" title="' + options.title + '">' + options.content + '</div>');
-      const images = $('#headphones-dialog img:not([data-helper-image-doNotWait])');
-      let imageCount = images.length;
-      let imageTotalHeight = 0;
+      const dialog = $('#headphones-dialog');
       const dialogOptions = {
         width: 1000,
         height: 'auto',
@@ -615,13 +623,9 @@ class HeadphonesCheck {
         draggable: false,
         closeOnEscape: false,
         buttons: [],
-        open() {
-          const max = document.documentElement.clientHeight - 40;
-          if ($(this).outerHeight(true) + imageTotalHeight > max) {
-            $(this).dialog('option', 'height', max);
-          }
-        },
-        close() {
+        open: resizeToFit,
+        close: function() {
+          $(window).off('resize', resizeToFit);
           $(this).dialog('destroy').remove();
         },
       };
@@ -643,20 +647,11 @@ class HeadphonesCheck {
           },
         });
       }
-      const showDialog = function() {
-        $('#headphones-dialog').dialog(dialogOptions).prev('.ui-dialog-titlebar').css('background', options.color);
-      };
-      if (imageCount) {
-        const imageHandler = function() {
-          imageTotalHeight += $(this).outerHeight(true);
-          if (--imageCount <= 0) {
-            showDialog();
-          }
-        };
-        images.on('load', imageHandler).on('error', imageHandler);
-      } else {
-        showDialog();
-      }
+      dialog
+          .dialog(dialogOptions)
+          .prev('.ui-dialog-titlebar')
+          .css('background', options.color);
+      $(window).on('resize', resizeToFit);
     });
   }
 }
