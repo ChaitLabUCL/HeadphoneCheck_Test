@@ -135,7 +135,7 @@ class HeadphonesCheck {
    * @constructor
    * @param {object} [settings={}] - settings for the Headphones Check
    * @param {Function} [settings.callback] - optional callback function on completion
-   * @param {string} [settings.volumeSound=stimuli_HugginsPitch/HugginsPitch_calibration.flac] - sound for volume adjustment
+   * @param {string} [settings.volumeSound] - sound for volume adjustment
    * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
    * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `antiphase`, or `beat`
    * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
@@ -281,20 +281,26 @@ class HeadphonesCheck {
    *
    * @member HeadphonesCheck.checkHeadphones
    * @param {Function} [callback] - (if set) callback on completion, with the result as argument: `true` or `false`
-   * @param {boolean} [repeat] - (if `true`) indicates user has returned to the checkVolume page, so enable the "I have finished..." button
+   * @param {boolean} [checkVolume=true] - whether to perform a volume check before the headphones check
+   * @param {boolean} [repeat] - indicates if user has returned to the checkVolume page, so enable the "I have finished..." button
    * @returns {Promise} fulfilled with the result of the headphones check (pass: resolve, fail: reject)
    */
-  checkHeadphones(callback, repeat) {
+  checkHeadphones(callback, checkVolume = true, repeat) {
     if (typeof callback === 'function') {
       this.callback = callback;
     }
-    const promise = this._adjustVolume();
-    if (repeat) {
-      $('button:contains("finished")').button('option', 'disabled', false);
-    }
-    promise.then(() => {
+    this._checkVolume = checkVolume;
+    if (this._checkVolume) {
+      const promise = this._adjustVolume();
+      if (repeat) {
+        $('button:contains("finished")').button('option', 'disabled', false);
+      }
+      promise.then(() => {
+        this._instruction();
+      });
+    } else {
       this._instruction();
-    });
+    }
     if (!this._promise || this._promise.fulfilled === true) {
       let resolveCall, rejectCall;
       this._promise = new Promise((resolve, reject) => {
@@ -348,7 +354,7 @@ class HeadphonesCheck {
           this._performCheck();
         },
         () => {
-          void this.checkHeadphones(undefined, true);
+          void this.checkHeadphones(undefined, this._checkVolume, true);
         },
     );
   }
