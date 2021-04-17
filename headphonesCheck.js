@@ -136,7 +136,7 @@ class HeadphonesCheck {
    * @param {object} [settings={}] - settings for the Headphones Check
    * @param {Function} [settings.callback] - optional callback function on completion
    * @param {string} [settings.volumeSound] - sound for volume adjustment
-   * @param {string} [settings.volumeText] - additional text to show on volume adjustment page
+   * @param {string} [settings.volumeText] - override text to shown volume adjustment page
    * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `antiphase`, or `beat`
    * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
@@ -149,7 +149,9 @@ class HeadphonesCheck {
     this._settings = {
       callback: undefined,
       volumeSound: 'stimuli_HugginsPitch/HugginsPitch_calibration.flac',
-      volumeText: '',
+      volumeText: '<p class="notice">Please put on your headphones.</p>' +
+          '<p>If you do not have headphones, you can use earbuds (headphones are preferred).</p>' +
+          '<p>Click the <span style="color:#03a9f4;"><b>blue</b></span> button below to play a sound to check your volume.</p>',
       checkType: 'huggins',
       checkVolume: 1,
       checkExample: 'stimuli_HugginsPitch/HugginsPitch_example_2.flac',
@@ -320,9 +322,7 @@ class HeadphonesCheck {
    * @return {Promise}
    */
   _adjustVolume() {
-    const html = '<p class="notice">Please put on your headphones.</p>' +
-        '<p>If you do not have headphones, you can use earbuds (headphones are preferred).</p>' +
-        '<p>Click the <span style="color:#03a9f4;"><b>blue</b></span> button below to play a sound to check your volume. ' + this._settings.volumeText + '</p>' +
+    const html = this._settings.volumeText +
         '<div class="notice">' +
         '<button type="button" data-helper-button data-headphones-audio-control data-headphones-audio-group="group1" disabled>Loading sounds...</button>' +
         '<audio data-headphones-audio-group="group1" data-headphones-volume="1" preload="auto" loop><source src="' + this._settings.volumeSound + '">' + this.htmlElements.audioProblem + '</audio>' +
