@@ -136,7 +136,7 @@ class HeadphonesCheck {
    * @param {object} [settings={}] - settings for the Headphones Check
    * @param {Function} [settings.callback] - optional callback function on completion
    * @param {string} [settings.volumeSound] - sound for volume adjustment
-   * @param {string} [settings.volumeText] - override text shown volume adjustment page
+   * @param {string} [settings.volumeText] - override text shown on volume adjustment page
    * @param {string} [settings.checkType=huggins] - headphones check paradigm,`huggins` or `antiphase`, or `beat`
    * @param {int} [settings.checkVolume=1] - volume setting for check sounds, from `0` (quietest) to `1` (loudest)
    * @param {string} [settings.checkExample] - example check sound (`huggins` and `beat` checkType only)
